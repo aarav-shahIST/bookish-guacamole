@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alpha Notes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">Alpha Notes</div>
+      <button id="sidebarToggle" class="sidebar-toggle" type="button" aria-label="Collapse sidebar">&lt;</button>
+    </div>
+
+    <label class="upload-button">
+      Import PDF
+      <input id="pdfUpload" type="file" accept="application/pdf">
+    </label>
+    <button id="newBlankBtn" class="blank-button" type="button">New Lined Notes</button>
+
+    <div id="pdfList" class="pdf-list"></div>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar">
+      <button id="sidebarExpand" class="sidebar-expand" type="button" aria-label="Show sidebar">Menu</button>
+      <button id="penBtn" class="tool active" type="button">Pen</button>
+      <button id="eraserBtn" class="tool" type="button">Eraser</button>
+      <button id="lassoBtn" class="tool" type="button">Lasso</button>
+      <button id="spaceBtn" class="tool" type="button">Add Space</button>
+      <span class="divider"></span>
+      <label class="color-control">
+        <span>Color</span>
+        <select id="penColor">
+          <option value="#000000">Black</option>
+          <option value="#d9342b">Red</option>
+          <option value="#1557d6">Blue</option>
+          <option value="#16833a">Green</option>
+        </select>
+      </label>
+      <label class="thickness-control">
+        <span>Thickness</span>
+        <input id="penThickness" type="range" min="1" max="12" step="0.5" value="3">
+        <output id="thicknessValue">3</output>
+      </label>
+      <span class="divider"></span>
+      <button id="undoBtn" type="button">Undo</button>
+      <button id="redoBtn" type="button">Redo</button>
+      <button id="deleteSelectionBtn" type="button" disabled>Delete Selection</button>
+      <button id="saveBtn" class="save" type="button">Save Notes</button>
+      <button id="exportBtn" type="button">Export PDF</button>
+      <button id="deleteNotesBtn" class="danger" type="button">Delete Notes</button>
+      <span id="status" class="status"></span>
+    </div>
+
+    <div id="documentArea" class="document-area">
+      <div class="empty-state">Import a PDF, select a document, or start lined notes.</div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
